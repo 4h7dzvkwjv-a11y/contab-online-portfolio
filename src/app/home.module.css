@@ -1,0 +1,39 @@
+section.library {
+  padding-top: 46px;
+  padding-bottom: 50px;
+}
+.libraryHeading {
+  align-items: center;
+  margin-bottom: 28px;
+}
+.libraryCount {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 550;
+  margin-bottom: 11px;
+}
+.libraryIntro {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.85;
+  margin-top: 11px;
+  max-width: 590px;
+}
+.allArticles {
+  min-height: 44px;
+  flex-shrink: 0;
+}
+.categoryLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+@media (max-width: 760px) {
+  section.library { padding-top: 35px; padding-bottom: 38px; }
+  .libraryHeading { flex-direction: column; align-items: stretch; gap: 20px; margin-bottom: 25px; }
+  .libraryIntro { font-size: 12px; }
+  .allArticles { width: 100%; }
+}

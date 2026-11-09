@@ -1,0 +1,103 @@
+.root {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  margin: 22px 0 26px;
+}
+.root:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+.value {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Ecranele mici păstrează textul integral, fără lățime minimă sau font micșorat. */
+@media screen and (max-width: 640px) {
+  .root {
+    margin: 21px 0;
+  }
+  .root table[data-columns] {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .root table[data-columns] :is(th, td) {
+    padding: 11px 12px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+  .root table[data-columns="2"] th:first-child {
+    width: 45%;
+  }
+  .root[data-mobile-layout="stacked"] {
+    border: 0;
+    border-radius: 0;
+    overflow: visible;
+  }
+  .root[data-mobile-layout="stacked"] table {
+    display: block;
+  }
+  /* Antetul rămâne în arborele de accesibilitate; fiecare celulă arată eticheta sa. */
+  .root[data-mobile-layout="stacked"] thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .root[data-mobile-layout="stacked"] tbody {
+    display: grid;
+    gap: 14px;
+  }
+  .root[data-mobile-layout="stacked"] tbody tr {
+    display: block;
+    min-width: 0;
+    padding: 4px 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+  }
+  .root[data-mobile-layout="stacked"] tbody td {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+    gap: 14px;
+    padding: 11px 0;
+    border-top: 0;
+    font-size: 14px;
+  }
+  .root[data-mobile-layout="stacked"] tbody td + td {
+    border-top: 1px solid var(--border);
+  }
+  .root[data-mobile-layout="stacked"] td::before {
+    content: attr(data-label);
+    min-width: 0;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.65;
+    text-align: left;
+  }
+  .root[data-mobile-layout="stacked"] td[data-label=""]::before {
+    display: none;
+  }
+  .root[data-mobile-layout="stacked"] td[data-label=""] .value {
+    grid-column: 1 / -1;
+    font-weight: 600;
+  }
+}
+
+@media print {
+  .root {
+    overflow: visible;
+  }
+}
+
